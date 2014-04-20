@@ -1,19 +1,17 @@
 //
-//  ViewController.h
+//  ChatRoomViewController.h
 //  Chats
 //
 //  Created by Charles Northup on 4/20/14.
 //  Copyright (c) 2014 MobileMakers. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 
-
-@interface ViewController : UIViewController <MCNearbyServiceAdvertiserDelegate, MCSessionDelegate, MCNearbyServiceBrowserDelegate>
+@interface ChatRoomViewController : MCBrowserViewController <MCAdvertiserAssistantDelegate, MCSessionDelegate, MCNearbyServiceBrowserDelegate>
 {
     MCPeerID* devicePeerID;
-    MCSession* mySession;
+    MCSession* session;
     MCNearbyServiceAdvertiser* serviceAdvertiser;
     MCNearbyServiceBrowser* nearbyServiceBrowser;
 }

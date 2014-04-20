@@ -21,6 +21,7 @@
 		5608DAFC19045FB0002BE613 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5608DADE19045FB0002BE613 /* UIKit.framework */; };
 		5608DB0419045FB0002BE613 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5608DB0219045FB0002BE613 /* InfoPlist.strings */; };
 		5608DB0619045FB0002BE613 /* ChatsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608DB0519045FB0002BE613 /* ChatsTests.m */; };
+		5608DB1019045FE1002BE613 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5608DB0F19045FE1002BE613 /* MultipeerConnectivity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		5608DB0119045FB0002BE613 /* ChatsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChatsTests-Info.plist"; sourceTree = "<group>"; };
 		5608DB0319045FB0002BE613 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5608DB0519045FB0002BE613 /* ChatsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatsTests.m; sourceTree = "<group>"; };
+		5608DB0F19045FE1002BE613 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5608DB1019045FE1002BE613 /* MultipeerConnectivity.framework in Frameworks */,
 				5608DADD19045FB0002BE613 /* CoreGraphics.framework in Frameworks */,
 				5608DADF19045FB0002BE613 /* UIKit.framework in Frameworks */,
 				5608DADB19045FB0002BE613 /* Foundation.framework in Frameworks */,
@@ -101,6 +104,7 @@
 		5608DAD919045FB0002BE613 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5608DB0F19045FE1002BE613 /* MultipeerConnectivity.framework */,
 				5608DADA19045FB0002BE613 /* Foundation.framework */,
 				5608DADC19045FB0002BE613 /* CoreGraphics.framework */,
 				5608DADE19045FB0002BE613 /* UIKit.framework */,
