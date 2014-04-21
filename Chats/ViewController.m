@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <BORChatCollectionViewController.h>
 
 @interface ViewController ()
 
@@ -81,6 +82,10 @@
 {
     NSLog(@"invitation received");
     invitationHandler(YES, mySession);
+    BORChatCollectionViewController* chatVC = [[BORChatCollectionViewController alloc] init];
+    [self presentViewController:chatVC animated:YES completion:^{
+        
+    }];
     
 }
 
