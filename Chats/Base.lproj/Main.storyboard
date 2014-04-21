@@ -23,7 +23,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onStartButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0qJ-Nu-Dvs"/>
+                                    <action selector="onStartButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="P8d-dV-Ay2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -35,9 +35,29 @@
             </objects>
             <point key="canvasLocation" x="664" y="98"/>
         </scene>
+        <!--Browser View Controller-->
+        <scene sceneID="gIT-3v-wYB">
+            <objects>
+                <viewController id="PEY-2g-PL1" customClass="BrowserViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P4R-kL-i9b"/>
+                        <viewControllerLayoutGuide type="bottom" id="7QN-zb-a03"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="my3-lV-XFV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DII-4s-2kD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWu-L0-SRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1177" y="98"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="FDp-3S-Lcm">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0j9-CJ-214" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g7o-fB-Uxt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1WS-KZ-LL8">
@@ -49,7 +69,6 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Fj1-sv-lYK"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0j9-CJ-214" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131" y="98"/>
         </scene>

@@ -22,6 +22,7 @@
 		5608DB0419045FB0002BE613 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5608DB0219045FB0002BE613 /* InfoPlist.strings */; };
 		5608DB0619045FB0002BE613 /* ChatsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608DB0519045FB0002BE613 /* ChatsTests.m */; };
 		5608DB1019045FE1002BE613 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5608DB0F19045FE1002BE613 /* MultipeerConnectivity.framework */; };
+		5608DB1619059B35002BE613 /* BrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608DB1519059B35002BE613 /* BrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		5608DB0319045FB0002BE613 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5608DB0519045FB0002BE613 /* ChatsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatsTests.m; sourceTree = "<group>"; };
 		5608DB0F19045FE1002BE613 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
+		5608DB1419059B35002BE613 /* BrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserViewController.h; sourceTree = "<group>"; };
+		5608DB1519059B35002BE613 /* BrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				5608DAE919045FB0002BE613 /* AppDelegate.h */,
 				5608DAEA19045FB0002BE613 /* AppDelegate.m */,
 				5608DAEC19045FB0002BE613 /* Main.storyboard */,
+				5608DB1419059B35002BE613 /* BrowserViewController.h */,
+				5608DB1519059B35002BE613 /* BrowserViewController.m */,
 				5608DAEF19045FB0002BE613 /* ViewController.h */,
 				5608DAF019045FB0002BE613 /* ViewController.m */,
 				5608DAF219045FB0002BE613 /* Images.xcassets */,
@@ -254,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5608DAF119045FB0002BE613 /* ViewController.m in Sources */,
+				5608DB1619059B35002BE613 /* BrowserViewController.m in Sources */,
 				5608DAEB19045FB0002BE613 /* AppDelegate.m in Sources */,
 				5608DAE719045FB0002BE613 /* main.m in Sources */,
 			);

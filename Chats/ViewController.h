@@ -10,12 +10,11 @@
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 
 
-@interface ViewController : UIViewController <MCNearbyServiceAdvertiserDelegate, MCSessionDelegate, MCNearbyServiceBrowserDelegate>
+@interface ViewController : UIViewController <MCNearbyServiceAdvertiserDelegate, MCSessionDelegate, MCAdvertiserAssistantDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceBrowserDelegate>
 {
     MCPeerID* devicePeerID;
     MCSession* mySession;
-    MCNearbyServiceAdvertiser* serviceAdvertiser;
-    MCNearbyServiceBrowser* nearbyServiceBrowser;
+    MCAdvertiserAssistant* advertiserAssistant;
 }
 
 @end
