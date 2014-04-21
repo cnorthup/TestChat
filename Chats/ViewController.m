@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad
 {
-    devicePeerID = [[MCPeerID alloc] initWithDisplayName:@"James"];
+    devicePeerID = [[MCPeerID alloc] initWithDisplayName:@"Jam"];
     mySession = [[MCSession alloc] initWithPeer:devicePeerID];
     mySession.delegate = self;
     advertiserAssistant = [[MCAdvertiserAssistant alloc] initWithServiceType:@"chat-txtchat" discoveryInfo:nil session:mySession];
@@ -57,6 +57,7 @@
 -(void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
 {
     NSLog(@"Session Manager found peer: %@", peerID);
+    [browser invitePeer:peerID toSession:mySession withContext:nil timeout:20];
 //    [nearbyServiceBrowser invitePeer:peerID toSession:mySession withContext:nil timeout:20];
     
 }
@@ -70,6 +71,8 @@
 {
     NSLog(@"Did not start browsing for peers: %@", error);
 }
+
+
 
 #pragma mark -- Advertiser
 
@@ -89,6 +92,7 @@
 - (void)advertiserAssitantWillPresentInvitation:(MCAdvertiserAssistant *)advertiserAssistant
 {
     NSLog(@"invited");
+    
 }
 
 #pragma mark -- Session
