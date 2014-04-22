@@ -12,7 +12,6 @@
 {
     MCPeerID* stevePeerID;
     __weak IBOutlet UITextField *messageTextField;
-    __weak IBOutlet UIButton *sendButton;
 }
 @end
 
@@ -20,7 +19,7 @@
 
 - (void)viewDidLoad
 {
-    devicePeerID = [[MCPeerID alloc] initWithDisplayName:@"James"];
+    devicePeerID = [[MCPeerID alloc] initWithDisplayName:@"Steve"];
 
     mySession = [[MCSession alloc] initWithPeer:devicePeerID];
     mySession.delegate = self;
@@ -28,7 +27,6 @@
     [advertiserAssistant start];
     advertiserAssistant.delegate = self;
     messageTextField.hidden = YES;
-    sendButton.hidden = YES;
     [super viewDidLoad];
     
     
@@ -60,7 +58,6 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
         messageTextField.hidden = NO;
-        sendButton.hidden = NO;
     }];
 }
 
@@ -105,7 +102,7 @@
 
 - (void)session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL accept))certificateHandler
 {
-    NSLog(@"Sure");
+    messageTextField.hidden = NO;
     certificateHandler(true);
 }
 
@@ -113,7 +110,7 @@
 {
     /// Receive the string here.
         NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",message);
+    NSLog(@"%@: %@", peerID, message);
     
     
 }
@@ -139,8 +136,6 @@
             
             NSLog(@"Connected to %@", peerID);
             stevePeerID = peerID;
-            messageTextField.hidden = NO;
-            sendButton.hidden = NO;
             break;
         } case MCSessionStateConnecting: {
             NSLog(@"Connecting to %@", peerID);
@@ -153,12 +148,21 @@
     
 }
 
-- (IBAction)onSendButtonPressed:(id)sender {
+//- (IBAction)onSendButtonPressed:(id)sender {
+//    NSError *error;
+//    [messageTextField endEditing:YES];
+//    [mySession sendData:[messageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:stevePeerID] withMode:MCSessionSendDataReliable error:&error];
+//    NSLog(@"%@", messageTextField.text);
+//    messageTextField.text = @"";
+//}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSError *error;
     [messageTextField endEditing:YES];
     [mySession sendData:[messageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:stevePeerID] withMode:MCSessionSendDataReliable error:&error];
-    NSLog(@"%@", messageTextField.text);
+    NSLog(@"%@: %@", devicePeerID, messageTextField.text);
     messageTextField.text = @"";
+    return YES;
 }
 
 
