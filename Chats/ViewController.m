@@ -140,7 +140,10 @@
             
             NSLog(@"Connected to %@", peerID.displayName);
             otherPeerID = peerID;
-            [self performSegueWithIdentifier:@"ChatRoomSegueID" sender:self];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self performSegueWithIdentifier:@"ChatRoomSegueID" sender:self];
+
+            });
             messageTextField.enabled = YES;
             break;
         } case MCSessionStateConnecting: {
