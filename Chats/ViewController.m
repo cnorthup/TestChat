@@ -110,7 +110,7 @@
 {
     /// Receive the string here.
         NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"%@: %@", peerID, message);
+    NSLog(@"%@: %@", peerID.displayName, message);
     
     
 }
@@ -148,34 +148,15 @@
     
 }
 
-//- (IBAction)onSendButtonPressed:(id)sender {
-//    NSError *error;
-//    [messageTextField endEditing:YES];
-//    [mySession sendData:[messageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:stevePeerID] withMode:MCSessionSendDataReliable error:&error];
-//    NSLog(@"%@", messageTextField.text);
-//    messageTextField.text = @"";
-//}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSError *error;
     [messageTextField endEditing:YES];
     [mySession sendData:[messageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:stevePeerID] withMode:MCSessionSendDataReliable error:&error];
-    NSLog(@"%@: %@", devicePeerID, messageTextField.text);
+    NSLog(@"%@: %@", devicePeerID.displayName, messageTextField.text);
     messageTextField.text = @"";
     return YES;
 }
 
-
-//- (void)start
-//{
-//    [serviceAdvertiser startAdvertisingPeer];
-//    [nearbyServiceBrowser startBrowsingForPeers];
-//}
-//
-//- (void)stop
-//{
-//    [serviceAdvertiser stopAdvertisingPeer];
-//    [nearbyServiceBrowser stopBrowsingForPeers];
-//}
 
 @end
