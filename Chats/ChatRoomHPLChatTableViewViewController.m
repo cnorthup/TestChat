@@ -67,7 +67,13 @@
 
 -(void)gotMessage:(NSDictionary*)message{
     [self.messages addObject:message];
-    [self.myChatTableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.myChatTableView reloadData];
+
+        NSIndexPath* indexPath = [NSIndexPath indexPathForRow:self.messages.count -1 inSection:0];
+        [self.myChatTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    });
+
 }
 
 @end
