@@ -1,10 +1,10 @@
 PODS:
-  - BORChat (0.1.0)
+  - HPLChatViewController (0.0.3)
 
 DEPENDENCIES:
-  - BORChat
+  - HPLChatViewController
 
 SPEC CHECKSUMS:
-  BORChat: 406d9f2e97a9c3335de8fdeddf4df056288772ef
+  HPLChatViewController: 4f3e82be8e79572ca966b57e7bed3765d3eb6af7
 
 COCOAPODS: 0.32.1

@@ -6,9 +6,9 @@
 // project.
 
 
-// BORChat
-#define COCOAPODS_POD_AVAILABLE_BORChat
-#define COCOAPODS_VERSION_MAJOR_BORChat 0
-#define COCOAPODS_VERSION_MINOR_BORChat 1
-#define COCOAPODS_VERSION_PATCH_BORChat 0
+// HPLChatViewController
+#define COCOAPODS_POD_AVAILABLE_HPLChatViewController
+#define COCOAPODS_VERSION_MAJOR_HPLChatViewController 0
+#define COCOAPODS_VERSION_MINOR_HPLChatViewController 0
+#define COCOAPODS_VERSION_PATCH_HPLChatViewController 3
 

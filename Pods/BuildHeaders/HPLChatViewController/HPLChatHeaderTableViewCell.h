@@ -1,0 +1,1 @@
+../../HPLChatViewController/Classes/HPLChatHeaderTableViewCell.h

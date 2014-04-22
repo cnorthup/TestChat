@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-BORChat.xcscheme</key>
+		<key>Pods-HPLChatViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2934F6A6275946B9B1B623D0</key>
+		<key>4B28F342348C4AACBAA4A4C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC589D6F28C54A62A1F34F44</key>
+		<key>5369B7D96632443587AE5813</key>
 		<dict>
 			<key>primary</key>
 			<true/>

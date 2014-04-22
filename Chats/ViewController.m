@@ -7,22 +7,28 @@
 //
 
 #import "ViewController.h"
-#import <BORChatCollectionViewController.h>
 
-@interface ViewController ()
-
+@interface ViewController () <UITextFieldDelegate>
+{
+    MCPeerID* stevePeerID;
+    __weak IBOutlet UITextField *messageTextField;
+    __weak IBOutlet UIButton *sendButton;
+}
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
-    devicePeerID = [[MCPeerID alloc] initWithDisplayName:@"Jam"];
+    devicePeerID = [[MCPeerID alloc] initWithDisplayName:@"James"];
+
     mySession = [[MCSession alloc] initWithPeer:devicePeerID];
     mySession.delegate = self;
     advertiserAssistant = [[MCAdvertiserAssistant alloc] initWithServiceType:@"chat-txtchat" discoveryInfo:nil session:mySession];
     [advertiserAssistant start];
     advertiserAssistant.delegate = self;
+    messageTextField.hidden = YES;
+    sendButton.hidden = YES;
     [super viewDidLoad];
     
     
@@ -52,15 +58,16 @@
 
 -(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController
 {
-    
+    [self dismissViewControllerAnimated:YES completion:^{
+        messageTextField.hidden = NO;
+        sendButton.hidden = NO;
+    }];
 }
 
 -(void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
 {
     NSLog(@"Session Manager found peer: %@", peerID);
     [browser invitePeer:peerID toSession:mySession withContext:nil timeout:20];
-//    [nearbyServiceBrowser invitePeer:peerID toSession:mySession withContext:nil timeout:20];
-    
 }
 
 -(void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
@@ -82,11 +89,6 @@
 {
     NSLog(@"invitation received");
     invitationHandler(YES, mySession);
-    BORChatCollectionViewController* chatVC = [[BORChatCollectionViewController alloc] init];
-    [self presentViewController:chatVC animated:YES completion:^{
-        
-    }];
-    
 }
 
 -(void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didNotStartAdvertisingPeer:(NSError *)error
@@ -96,26 +98,22 @@
 
 - (void)advertiserAssitantWillPresentInvitation:(MCAdvertiserAssistant *)advertiserAssistant
 {
-    NSLog(@"invited");
-    
+    NSLog(@"Wanna Chat");
 }
 
 #pragma mark -- Session
 
 - (void)session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL accept))certificateHandler
 {
-    NSLog(@"Did receive certificate");
+    NSLog(@"Sure");
     certificateHandler(true);
 }
 
-
 -(void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID
 {
-    NSLog(@"Did receive data.");
-    
     /// Receive the string here.
-    NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"Message: %@",message);
+        NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",message);
     
     
 }
@@ -140,9 +138,9 @@
         case MCSessionStateConnected: {
             
             NSLog(@"Connected to %@", peerID);
-            NSError *error;
-            [mySession sendData:[@"text" dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:peerID] withMode:MCSessionSendDataReliable error:&error];
-            
+            stevePeerID = peerID;
+            messageTextField.hidden = NO;
+            sendButton.hidden = NO;
             break;
         } case MCSessionStateConnecting: {
             NSLog(@"Connecting to %@", peerID);
@@ -154,6 +152,15 @@
     }
     
 }
+
+- (IBAction)onSendButtonPressed:(id)sender {
+    NSError *error;
+    [messageTextField endEditing:YES];
+    [mySession sendData:[messageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:stevePeerID] withMode:MCSessionSendDataReliable error:&error];
+    NSLog(@"%@", messageTextField.text);
+    messageTextField.text = @"";
+}
+
 
 //- (void)start
 //{

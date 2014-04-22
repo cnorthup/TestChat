@@ -1,1 +1,0 @@
-../../BORChat/Classes/ios/BORChatRoom.h

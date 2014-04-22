@@ -41,11 +41,16 @@ install_resource()
       ;;
   esac
 }
-install_resource "BORChat/Resources/othersLastMessageBubble@2x.png"
-install_resource "BORChat/Resources/othersMessageBubble@2x.png"
-install_resource "BORChat/Resources/usersLastMessageBubble@2x.png"
-install_resource "BORChat/Resources/usersMessageBubble@2x.png"
-install_resource "BORChat/Resources/Chat.xcassets"
+install_resource "HPLChatViewController/Images"
+install_resource "HPLChatViewController/Images/2x/fail@2x.png"
+install_resource "HPLChatViewController/Images/2x/missingAvatar@2x.png"
+install_resource "HPLChatViewController/Images/2x/typingMine@2x.png"
+install_resource "HPLChatViewController/Images/2x/typingSomeone@2x.png"
+install_resource "HPLChatViewController/Images/fail.png"
+install_resource "HPLChatViewController/Images/missingAvatar.png"
+install_resource "HPLChatViewController/Images/symbol-error.png"
+install_resource "HPLChatViewController/Images/typingMine.png"
+install_resource "HPLChatViewController/Images/typingSomeone.png"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then
