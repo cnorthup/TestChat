@@ -17,4 +17,7 @@
     MCAdvertiserAssistant* advertiserAssistant;
 }
 
++(void)session:(MCSession*)session message:(NSString*)message peers:(NSArray*)peers
+          mode:(MCSessionSendDataMode*)mode error:(NSError*)error completionBlock:(void(^)(void))completionBlock;
+
 @end

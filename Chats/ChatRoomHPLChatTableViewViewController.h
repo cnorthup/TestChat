@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
+
 
 @interface ChatRoomHPLChatTableViewViewController : UIViewController
+
+@property MCSession* session;
+@property MCPeerID* deviceID;
+@property NSArray* peers;
 
 @end

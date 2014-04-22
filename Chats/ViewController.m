@@ -7,10 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "ChatRoomHPLChatTableViewViewController.h"
 
 @interface ViewController () <UITextFieldDelegate>
 {
-    MCPeerID* stevePeerID;
+    MCPeerID* otherPeerID;
     __weak IBOutlet UITextField *messageTextField;
 }
 @end
@@ -19,14 +20,14 @@
 
 - (void)viewDidLoad
 {
-    devicePeerID = [[MCPeerID alloc] initWithDisplayName:@"Steve"];
+    devicePeerID = [[MCPeerID alloc] initWithDisplayName:@"James"];
 
     mySession = [[MCSession alloc] initWithPeer:devicePeerID];
     mySession.delegate = self;
     advertiserAssistant = [[MCAdvertiserAssistant alloc] initWithServiceType:@"chat-txtchat" discoveryInfo:nil session:mySession];
     [advertiserAssistant start];
     advertiserAssistant.delegate = self;
-    messageTextField.hidden = YES;
+    messageTextField.enabled = NO;
     [super viewDidLoad];
     
     
@@ -57,7 +58,7 @@
 -(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        messageTextField.hidden = NO;
+        messageTextField.enabled = YES;
     }];
 }
 
@@ -102,7 +103,7 @@
 
 - (void)session:(MCSession *)session didReceiveCertificate:(NSArray *)certificate fromPeer:(MCPeerID *)peerID certificateHandler:(void (^)(BOOL accept))certificateHandler
 {
-    messageTextField.hidden = NO;
+    messageTextField.enabled = YES;
     certificateHandler(true);
 }
 
@@ -134,8 +135,10 @@
     switch (state) {
         case MCSessionStateConnected: {
             
-            NSLog(@"Connected to %@", peerID);
-            stevePeerID = peerID;
+            NSLog(@"Connected to %@", peerID.displayName);
+            otherPeerID = peerID;
+            [self performSegueWithIdentifier:@"ChatRoomSegueID" sender:self];
+            messageTextField.enabled = YES;
             break;
         } case MCSessionStateConnecting: {
             NSLog(@"Connecting to %@", peerID);
@@ -148,13 +151,33 @@
     
 }
 
++(void)session:(MCSession*)session message:(NSString*)message peers:(NSArray*)peers
+          mode:(MCSessionSendDataMode*)mode error:(NSError*)error completionBlock:(void(^)(void))completionBlock;
+{
+    [session sendData:[message dataUsingEncoding:NSUTF8StringEncoding] toPeers:peers withMode:*mode error:&error];
+    completionBlock();
+
+}
+
+#pragma mark-- Segue
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ChatRoomSegueID"]) {
+        ChatRoomHPLChatTableViewViewController* cVC = segue.destinationViewController;
+        cVC.deviceID = devicePeerID;
+        cVC.session = mySession;
+        cVC.peers = mySession.connectedPeers;
+        
+    }
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    NSError *error;
-    [messageTextField endEditing:YES];
-    [mySession sendData:[messageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:stevePeerID] withMode:MCSessionSendDataReliable error:&error];
-    NSLog(@"%@: %@", devicePeerID.displayName, messageTextField.text);
-    messageTextField.text = @"";
+//    NSError *error;
+//    [messageTextField endEditing:YES];
+//    [mySession sendData:[messageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:[NSArray arrayWithObject:stevePeerID] withMode:MCSessionSendDataReliable error:&error];
+//    NSLog(@"%@: %@", devicePeerID.displayName, messageTextField.text);
+//    messageTextField.text = @"";
     return YES;
 }
 

@@ -24,6 +24,7 @@
 		5608DB1019045FE1002BE613 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5608DB0F19045FE1002BE613 /* MultipeerConnectivity.framework */; };
 		5608DB1619059B35002BE613 /* BrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608DB1519059B35002BE613 /* BrowserViewController.m */; };
 		5608DB1C1905DE6D002BE613 /* ChatRoomHPLChatTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608DB1B1905DE6D002BE613 /* ChatRoomHPLChatTableViewViewController.m */; };
+		5608DB1F1906B613002BE613 /* MessageManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608DB1E1906B613002BE613 /* MessageManger.m */; };
 		D9058BEB7F7D4E8DAC8A7CAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA68D17F3934955926CA755 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		5608DB1519059B35002BE613 /* BrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserViewController.m; sourceTree = "<group>"; };
 		5608DB1A1905DE6C002BE613 /* ChatRoomHPLChatTableViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRoomHPLChatTableViewViewController.h; sourceTree = "<group>"; };
 		5608DB1B1905DE6D002BE613 /* ChatRoomHPLChatTableViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRoomHPLChatTableViewViewController.m; sourceTree = "<group>"; };
+		5608DB1D1906B613002BE613 /* MessageManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageManger.h; sourceTree = "<group>"; };
+		5608DB1E1906B613002BE613 /* MessageManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageManger.m; sourceTree = "<group>"; };
 		6BA68D17F3934955926CA755 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3405B07F1140EAAEE63F42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,10 +136,12 @@
 				5608DAEC19045FB0002BE613 /* Main.storyboard */,
 				5608DB1419059B35002BE613 /* BrowserViewController.h */,
 				5608DB1519059B35002BE613 /* BrowserViewController.m */,
-				5608DAEF19045FB0002BE613 /* ViewController.h */,
 				5608DB1A1905DE6C002BE613 /* ChatRoomHPLChatTableViewViewController.h */,
 				5608DB1B1905DE6D002BE613 /* ChatRoomHPLChatTableViewViewController.m */,
+				5608DAEF19045FB0002BE613 /* ViewController.h */,
 				5608DAF019045FB0002BE613 /* ViewController.m */,
+				5608DB1D1906B613002BE613 /* MessageManger.h */,
+				5608DB1E1906B613002BE613 /* MessageManger.m */,
 				5608DAF219045FB0002BE613 /* Images.xcassets */,
 				5608DAE119045FB0002BE613 /* Supporting Files */,
 			);
@@ -305,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5608DB1C1905DE6D002BE613 /* ChatRoomHPLChatTableViewViewController.m in Sources */,
+				5608DB1F1906B613002BE613 /* MessageManger.m in Sources */,
 				5608DAF119045FB0002BE613 /* ViewController.m in Sources */,
 				5608DB1619059B35002BE613 /* BrowserViewController.m in Sources */,
 				5608DAEB19045FB0002BE613 /* AppDelegate.m in Sources */,
