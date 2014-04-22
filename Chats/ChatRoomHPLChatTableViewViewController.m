@@ -48,6 +48,7 @@
     [self.session sendData:[self.myMessageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
     [self.myChatTableView reloadData];
     [self.myMessageTextField endEditing:YES];
+    NSLog(@"%@: %@", self.deviceID.displayName, self.myMessageTextField.text);
     self.myMessageTextField.text = @"";
     return YES;
 }
