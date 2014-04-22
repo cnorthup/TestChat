@@ -13,6 +13,7 @@
 {
     MCPeerID* otherPeerID;
     __weak IBOutlet UITextField *messageTextField;
+    ChatRoomHPLChatTableViewViewController* chatVC;
 }
 @end
 
@@ -111,6 +112,8 @@
 {
     /// Receive the string here.
         NSString *message = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary* recievedMessage = @{@"sender": peerID, @"message": message};
+    [chatVC gotMessage:recievedMessage];
     NSLog(@"%@: %@", peerID.displayName, message);
     
     
@@ -168,6 +171,7 @@
         cVC.deviceID = devicePeerID;
         cVC.session = mySession;
         cVC.peers = mySession.connectedPeers;
+        chatVC = cVC;
         
     }
 }

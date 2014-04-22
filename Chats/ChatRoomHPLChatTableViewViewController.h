@@ -16,4 +16,7 @@
 @property MCPeerID* deviceID;
 @property NSArray* peers;
 
+
+-(void)gotMessage:(NSDictionary*)message;
+
 @end

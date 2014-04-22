@@ -13,8 +13,8 @@
 
 @interface ChatRoomHPLChatTableViewViewController () <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *myMessageTextField;
-@property NSMutableArray* messages;
 @property (weak, nonatomic) IBOutlet UITableView *myChatTableView;
+@property NSMutableArray* messages;
 
 @end
 
@@ -34,23 +34,40 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MessageReuseCellID"];
+    NSDictionary* cellDictionary = [self.messages objectAtIndex:indexPath.row];
+    if ([cellDictionary objectForKey:@"sender"] == self.deviceID) {
+        cell.textLabel.text = cellDictionary[@"message"];
+        cell.backgroundColor = [UIColor grayColor];
+    }
+    else{
+        cell.textLabel.text = cellDictionary[@"message"];
+        cell.backgroundColor = [UIColor orangeColor];
+    }
+    
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return self.messages.count;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     NSError *error;
     [self.session sendData:[self.myMessageTextField.text dataUsingEncoding:NSUTF8StringEncoding] toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
-    [self.myChatTableView reloadData];
     [self.myMessageTextField endEditing:YES];
+    
+    NSDictionary* sentMessage = @{@"sender": self.deviceID, @"message": self.myMessageTextField.text};
+    [self gotMessage:sentMessage];
     NSLog(@"%@: %@", self.deviceID.displayName, self.myMessageTextField.text);
     self.myMessageTextField.text = @"";
     return YES;
+}
+
+-(void)gotMessage:(NSDictionary*)message{
+    [self.messages addObject:message];
+    [self.myChatTableView reloadData];
 }
 
 @end
